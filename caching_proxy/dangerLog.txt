@@ -1,0 +1,13 @@
+1. At first, when connection fails, the program will exit. After improvement, whenever the connection not succeed, the program will print the hint, exit the current thread and wait for the next connection.
+
+2. We took element "private" in Cache-Control into consideration, when we parse out "private" in Cache-Control, we will not store the response into cache.
+
+3. Using while loop to receive response, everytime we will get the length of received data, when length is 0 we jump out the loop and wait for receiving other responses.
+
+4. Sometimes the "Cache-Control" may be written as "cache-control", so we detect both versions.
+5. Improve cache control policy that the response will not store in the cache when either request or response has flag: "no store".
+5. Add different lock for writing in cache and getting ip info, to make the program thread safe.
+6. give suitable notification in log when clients typing invalid url or wrong port number.
+7. use "try-catch" to catch exceptions in each thread
+8. Still can not deal with specific 301 redirection requests, such as some subpages in cplusplus.com.
+9. When running in docker the timezone will set to GMT, but can show local time out of the docker

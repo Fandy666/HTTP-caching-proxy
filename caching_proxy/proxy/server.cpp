@@ -1,0 +1,498 @@
+#include <iostream>
+#include <cstring>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <unistd.h>
+#include <sstream>
+#include "request.h"
+#include "response.h"
+#include <vector>
+#include <algorithm>
+#include <stdio.h>
+#include <exception>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <thread>
+#define MAX_BUFFER_SIZE 33554432 // 2^25
+#include "cache.h"
+#include "log.h"
+using namespace std;
+
+void test_print(RESPONSE & res){
+  for (vector<char>::const_iterator i = res.content.begin(); i != res.content.end(); ++i)
+    cout << *i;
+  cout << endl;
+}
+
+void process_firstL(char * str, REQUEST &req){
+  stringstream is(str);
+  string full_url;
+  is>>req.method>>full_url>>req.version;
+  
+  size_t found = full_url.find("http://");
+  if (found != string::npos){
+  //  cout << " http:// exists " << found << '\n';  //test
+    req.part_url = full_url.substr(found + strlen("http://"));
+  //  cout << "part_url:" << req.part_url << '\n';  //test
+  }else{
+    req.part_url = full_url;
+  }
+
+  size_t first_slash = req.part_url.find("/");
+  if(first_slash != string::npos){
+    req.hostname = req.part_url.substr(0, first_slash);
+  }else{
+    req.hostname = req.part_url;
+  }
+ 
+
+  //get port number
+  req.port_num = "80";
+  size_t first_comma = req.hostname.find(":");
+  if (first_comma != string::npos){
+    req.port_num = req.hostname.substr(first_comma+1);
+    req.hostname = req.hostname.substr(0,first_comma);
+  }
+  //cout << "hostname:" << req.hostname << '\n';  //test
+  //cout << "req.port_num:" << req.port_num << endl;  //test
+}
+
+void process_req(char * buffer, REQUEST &req){
+  string request_content = string(buffer);
+  stringstream ss(request_content);
+  string item;
+  getline(ss, item);
+  //get header
+  ss.str("");
+  ss.clear();
+  size_t first_end = item.find_first_of("\r\n");
+  string first_line = item.substr(0, first_end);
+  strcpy(req.content, buffer);
+
+  process_firstL((char*)first_line.c_str(),req);
+  int control = request_content.find("cache_control:");
+  if(control != string::npos){
+    req.cache_control= request_content.substr(control+15);
+    int len_end=req.cache_control.find_first_of("\r\n");
+    req.cache_control=req.cache_control.substr(0,len_end);
+    if(req.cache_control.find("no-store") != string::npos){  
+      req.cache_control = "no-store";
+    }
+  }
+
+}
+
+int detect_body(string find_chunked){
+  //-1 tran encode 0 no body >1 length
+  int content_len1 = find_chunked.find("Content-Length:");
+  int content_len2 = find_chunked.find("content-length:");
+  int tranfer_encode1 = find_chunked.find("Tranfer-Encoding:");
+  int tranfer_encode2 = find_chunked.find("tranfer-encoding:");
+  if(content_len1 != string::npos || content_len2 != string::npos){
+    if(content_len1 != string::npos ){
+      find_chunked=find_chunked.substr(content_len1+16);
+    }else{
+      find_chunked=find_chunked.substr(content_len1+16);
+    }
+    int len_end=find_chunked.find_first_of("\r\n");
+    string lenth=find_chunked.substr(0,len_end);
+    return atoi(lenth.c_str());
+  }else if( tranfer_encode1 != string::npos || tranfer_encode2 != string::npos){
+    return -1;
+  }else{
+  return 0;
+  }
+}
+
+
+int check_end(RESPONSE &res){
+  char * temp = res.content.data();
+  char * pch = strstr (temp,"\r\n\r\n");
+  if(pch != NULL){
+    return pch-temp+4;
+  }else{
+    return -1;
+  }
+}
+void recv_data(int socket_fd, REQUEST &req, RESPONSE &res){
+  //cout << "recv_data" <<endl; //test
+  int res_len = 0;
+  res.content.clear();
+  res.content = vector<char>(MAX_BUFFER_SIZE, 0); 
+  int recv_len = recv(socket_fd ,res.content.data(), 2048, 0);
+  if(recv_len<=0){
+    //cout<<"can not get response from server"<<endl;
+    return;
+  }
+  //size_t first_end = item.find_first_of("\r\n");
+  //string first_line = item.substr(0, first_end);
+  //strcpy(req.content, buffer);
+  string find_chunked = string(res.content.data());
+  //find status
+  int first_s = find_chunked.find_first_of("\r\n");
+  string first_status = find_chunked.substr(0, first_s);
+  res.response_mess = first_status;
+  int space = first_status.find(" ");
+  res.status = first_status.substr(space+1);
+  //test_print(res);  //test
+  // if encoding type: chunked
+  int chunked = find_chunked.find("chunked");
+  int chunked2 = find_chunked.find("Chunked");
+ // cout << "chunked?" << endl; //test
+  if(chunked != string::npos || chunked2 != string::npos){
+   // cout << "chunked"  << endl; //test
+    while(1){
+     // cout << "111" << endl; //test
+      res_len += recv_len;
+      const char *crlf2 = "0\r\n\r\n";
+      vector<char>::iterator it = search(res.content.begin(), res.content.end(), crlf2, crlf2 + strlen(crlf2));
+      if(it != res.content.end()){
+       // cout << "hello" << endl; //test
+        break;
+      }
+      recv_len = recv(socket_fd ,res.content.data() + res_len, 1024, 0);
+    }
+    res.content_len = res_len;
+    res.content.resize(res.content_len);
+    //cout<<"content size: "<<res.content.size()<<endl; 
+  }else{
+    //no chunked search end
+    //first find out body?
+   // cout << "no chunked: " << recv_len << endl; //test
+    int flag_body = detect_body(find_chunked);  //-1 trans code 0 no body >1 length
+    //cout << "flag body" << flag_body <<endl; //test
+    //test_print(res);
+    int head_end = check_end(res);//the total num of char in header
+    //cout << "hearder size" << head_end << endl; //test
+    if(head_end==-1){
+     // cout<<"size for head is not big enough"<<endl;
+    // res.content_len = recv_len;
+      // res.content.resize(res.content_len);
+      // cout<<"content size: "<<res.content.size()<<endl; //test
+      return;
+    }
+    //check body?
+    if(flag_body==0){
+      res.content_len = recv_len;
+      res.content.resize(res.content_len);
+     // cout<<"content size: "<<res.content.size()<<endl; //test
+      return;
+    }else{
+      int body_length=flag_body;
+     // cout<<"body length"<<body_length<<endl;
+      int left_len=body_length-(recv_len-head_end);
+      while(left_len > 0){	
+     // cout << "test4" <<endl;
+      res_len += recv_len;
+      recv_len = recv(socket_fd ,res.content.data() + res_len, 1024, 0);
+      left_len -= recv_len;
+      // test_print(res); //test
+     // cout << "recv_len_in_while:" << recv_len << endl;
+      if(recv_len <= 0){
+        break;
+      }
+      }
+    }// cout << *i;
+    res.content_len = head_end+flag_body;
+    res.content.resize(res.content_len+4);
+    //cout<<"content size: "<<res.content.size()<<endl; 
+  }
+  }
+
+
+int get_server(char *buffer, REQUEST &req, RESPONSE &res, Cache &proxy_cache, Log &proxy_log, int ID){
+  int status;
+  int socket_fd;
+  struct addrinfo host_info;
+  struct addrinfo *host_info_list;
+  const char *hostname = req.hostname.c_str();
+  const char *port     = req.port_num.c_str();
+  
+  memset(&host_info, 0, sizeof(host_info));
+  host_info.ai_family   = AF_UNSPEC;
+  host_info.ai_socktype = SOCK_STREAM;
+
+  status = getaddrinfo(hostname, port, &host_info, &host_info_list);
+  if (status != 0) {
+    proxy_log.print_infile("Error 105: cannot get address info for host", ID);
+    return -1;
+  } 
+
+  socket_fd = socket(host_info_list->ai_family, 
+         host_info_list->ai_socktype, 
+         host_info_list->ai_protocol);
+  if (socket_fd == -1) {
+    cerr << "Error: cannot create socket" << endl;
+    cerr << "  (" << hostname << "," << port << ")" << endl;
+    return -1;
+  } 
+  
+  status = connect(socket_fd, host_info_list->ai_addr, host_info_list->ai_addrlen);
+  if (status == -1) {
+    cerr << "Error: cannot connect to socket" << endl;
+    cerr << "  (" << hostname << "," << port << ")" << endl;
+    return -1;
+  } 
+
+  if(req.method.compare("CONNECT") == 0){
+    return socket_fd;
+  }else if(req.method.compare("GET") == 0){
+    //check in cache?
+    int in_cache = proxy_cache.check_cache(req, res, proxy_log, ID);
+    if(in_cache){
+      //get res.content from map
+      close(socket_fd);
+      return 0;
+    }
+    string request_mess = "Requesting \"" + req.method + " " + req.part_url + " " + req.version + "\" from " + req.hostname;
+    proxy_log.print_infile(request_mess, ID);
+    int send_len = send(socket_fd, req.content, req.request_len, 0);
+    //cout << "method_get,send_len:" << send_len << endl;  //test
+    recv_data(socket_fd, req, res);
+    string req_mess = "Received \"" + res.response_mess + "\" from " + req.hostname;
+    proxy_log.print_infile(req_mess, ID);
+    close(socket_fd);
+  }else if(req.method.compare("POST") == 0){
+    int send_len = send(socket_fd, buffer, strlen(buffer), 0);
+    //cout<<"send buffer"<<buffer<<endl;
+   // cout << "method_post,send_len:" << send_len << endl;  //test
+    recv_data(socket_fd, req, res);
+    close(socket_fd);
+  }else{
+    proxy_log.print_infile("Error : invalid request method", ID);
+    return -1;
+  }
+  
+
+  //free
+  freeaddrinfo(host_info_list);
+  return 0;
+}
+
+void send_all(int socket_fd, char* content,size_t size){
+  int temp=0;
+  int sum=0;
+  // char sendbuf[size]={0};
+  // strcpy(sendbuf,content.c_str());
+  while(1){
+    temp=send(socket_fd, content, size, 0);
+    if(temp>0){
+     sum+=temp;
+    }
+    //cout << "send_result:" << temp << endl;  //test
+    if(sum==size){
+     break;
+    }
+  }
+}
+
+void send_client(int client_connection_fd, REQUEST &req, RESPONSE &res, Cache &proxy_cache, Log &proxy_log, int ID){
+  //if 304
+  if(res.status.find("304") != string::npos){
+    RESPONSE res_cache = proxy_cache.mymap.find(req.part_url)->second;
+    send_all(client_connection_fd, res_cache.content.data(), res_cache.content_len);
+  }else{
+    send_all(client_connection_fd, res.content.data(), res.content_len);
+    if(res.status.find("200") != string::npos){
+      proxy_cache.save_cache(req, res, proxy_log, ID); 
+    }
+  }
+}
+
+int server_setup(string port_num){
+  int status;
+  int socket_fd;
+  struct addrinfo host_info;
+  struct addrinfo *host_info_list;
+  const char *hostname = NULL;
+  const char *port     = port_num.c_str();
+
+  memset(&host_info, 0, sizeof(host_info));
+
+  host_info.ai_family   = AF_UNSPEC;
+  host_info.ai_socktype = SOCK_STREAM;
+  host_info.ai_flags    = AI_PASSIVE;
+
+  status = getaddrinfo(hostname, port, &host_info, &host_info_list);
+  if (status != 0) {
+    cerr << "Error: cannot get address info for host" << endl;
+    cerr << "  (" << hostname << "," << port << ")" << endl;
+    return -1;
+  } //if
+
+  socket_fd = socket(host_info_list->ai_family, 
+         host_info_list->ai_socktype, 
+         host_info_list->ai_protocol);
+  if (socket_fd == -1) {
+    cerr << "Error: cannot create socket" << endl;
+    cerr << "  (" << hostname << "," << port << ")" << endl;
+    return -1;
+  } //if
+
+  int yes = 1;
+  status = setsockopt(socket_fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
+  status = bind(socket_fd, host_info_list->ai_addr, host_info_list->ai_addrlen);
+  if (status == -1) {
+    cerr << "Error: cannot bind socket" << endl;
+    cerr << "  (" << hostname << "," << port << ")" << endl;
+    return -1;
+  } //if
+
+  status = listen(socket_fd, 100);
+  if (status == -1) {
+    cerr << "Error: cannot listen on socket" << endl; 
+    cerr << "  (" << hostname << "," << port << ")" << endl;
+    return -1;
+  } //if
+  freeaddrinfo(host_info_list);
+  return socket_fd;
+} 
+
+int connect_cs(int client_fd, int server_fd, REQUEST &req, RESPONSE &res, Log &proxy_log, int ID){
+  if(server_fd == -1){
+    cout << "CONNECT: server error" << endl;  // change it to web response
+  }
+  // int status = send(server_fd, req.content, 4096, 0);
+  // if(status == -1){
+  //   cout << "connect_cs status error" <<endl; //test
+  // }
+  // cout << "status" << status << endl; //test
+  const char * message = "HTTP/1.1 200 Connection Established\r\n\r\n";
+  int send_result = send(client_fd, message, strlen(message), 0);
+  if(send_result == -1){
+    cout << "send error" << endl; //test
+  }
+  //cout << "send_result" << send_result << endl; //test
+  // struct timeval tv;  // for timeout
+  fd_set read_fds;
+  fd_set master;
+  // FD_ZERO(&read_fds);
+  FD_ZERO(&master);
+  int fdmax = max(client_fd, server_fd);
+
+  FD_SET(client_fd, &master);
+  FD_SET(server_fd, &master);
+  
+  // master = read_fds;
+  while(1){
+   // cout << "while 1" << endl; //test
+    read_fds = master;
+    if(select(fdmax+1, &read_fds, NULL, NULL, NULL) == -1){
+      cout << "select error" << endl;  
+    }
+    if(FD_ISSET(client_fd, &read_fds)){
+      //cout << "client" << endl; // test
+      vector<char> buffer(1024, 0); 
+      // buffer.clear();
+      int recv_len = recv(client_fd, buffer.data(), 1024, 0);
+      if(recv_len == -1){
+        cout << "client recv error" << endl; //test
+        break;
+      }
+      buffer.resize(recv_len);
+      //cout << "buffer size" << buffer.size() << endl; //test
+      if(buffer.size() == 0){
+        proxy_log.print_infile("Tunnel closed", ID);
+        return 1;
+      }
+      int send_len = send(server_fd, buffer.data(), recv_len, 0);
+      //cout << "send len:" << send_len << endl; //test
+      //cout << "client end" << endl; // test
+
+    }else if(FD_ISSET(server_fd, &read_fds)){
+      //cout << "server" << endl; // test
+      vector<char> buffer(1024, 0);
+      // buffer.clear();
+      int recv_len = recv(server_fd, buffer.data(), 1024, 0);
+      if(recv_len == -1){
+        cout << "server recv error" << endl; //test
+        break;
+      }
+      buffer.resize(recv_len);
+    //  cout << "buffer size" << buffer.size() << endl; //test
+      if(buffer.size() == 0){
+        proxy_log.print_infile("Tunnel closed", ID);
+        return 1;
+      }
+      send(client_fd, buffer.data(), recv_len, 0);
+     // cout << "server end" << endl; // test
+
+    }
+  }
+  return 0;
+}
+void handle_thread(int client_connection_fd, int ID, Cache &proxy_cache, Log &proxy_log){
+    char buffer[4096];
+    memset(buffer, 0, 4096);
+    int recv_result = recv(client_connection_fd, buffer, 4096, 0);
+    if(recv_result <=0){
+      //proxy_log.print_infile("receive failure from client", ID);
+      //cout<<"receive failure from client"<<endl;//test
+      close(client_connection_fd);
+      return;
+    }
+    REQUEST req;  //?????
+    RESPONSE res;
+    req.request_len = recv_result;
+    process_req(buffer, req);
+    proxy_log.new_req(req, ID);
+    //cout << req.method << endl; //test
+    //cout << "test1" << endl;  //test
+    int server_fd = get_server(buffer, req, res, proxy_cache, proxy_log, ID);
+    if(server_fd == -1){
+      close(client_connection_fd);
+      return;
+    }
+    //cout << "server_fd" << server_fd << endl; //test
+    if(req.method == "CONNECT"){
+      //cout << "test cnnect" << endl; //test
+      int cs_result = connect_cs(client_connection_fd, server_fd, req, res, proxy_log, ID);
+    }else{
+      send_client(client_connection_fd, req, res, proxy_cache, proxy_log, ID);
+    } 
+    // free
+   // cout<<"cache: "<<endl;
+    //for(map<string, RESPONSE>::iterator it = proxy_cache.mymap.begin(); it != proxy_cache.mymap.end(); ++it) {
+    //  cout << it->first << "\n";
+   // }
+    close(client_connection_fd);
+}
+
+
+int main(int argc, char* argv[])
+{
+  /* if(argc != 2){
+    cout << "Syntax: ./proxy <port number>" << endl;
+    return 1;
+    }*/
+  int socket_fd = server_setup("12345");
+  Cache proxy_cache;
+  Log proxy_log("/var/log/erss/proxy.log");
+  int ID = 0;
+  
+  // cout << "Waiting for connection on port " << port << endl;
+  while(1){
+    struct sockaddr_in socket_addr;
+    socklen_t socket_addr_len = sizeof(socket_addr);
+    int client_connection_fd;
+    client_connection_fd = accept(socket_fd, (struct sockaddr *)&socket_addr, &socket_addr_len);
+    //cout << "client_connection_fd" << client_connection_fd << endl; //test
+    proxy_log.get_ip(socket_addr);
+    if (client_connection_fd == -1) {
+      cerr << "Error: cannot accept connection on socket" << endl;
+      continue;
+    } //if
+    ID++;
+    try{
+      thread proxy_thread(handle_thread, client_connection_fd, ID, ref(proxy_cache), ref(proxy_log));
+      proxy_thread.detach();
+      }catch (exception& e){
+        cout<<e.what()<<endl;
+        continue;
+      }
+    
+  }
+  
+  //  close(socket_fd);
+  return 0;
+}

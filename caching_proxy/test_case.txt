@@ -1,0 +1,25 @@
+testcase:
+GET:
+Visit http://beej-zhcn.netdpi.net/
+POST:
+Search something in http://beej-zhcn.netdpi.net/
+Connect:
+visit https://www.youtube.com/
+
+Cache-Control:
+1. cached
+Visit http://people.duke.edu/~bmr23/ece568/class.html
+2. "no store"
+echo -e "GET http://beej-zhcn.netdpi.net/ HTTP/1.1\r\nHost: beej-zhcn.netdpi.net\r\nCache-Control: no-cache, no-store\r\n\r\n" | nc vcm-8265.vm.duke.edu 12345
+3. "max-age"
+echo -e "GET http://www.cnblogs.com/favicon.ico HTTP/1.1\r\nHost: www.cnblogs.com\r\n\r\n" | nc vcm-8265.vm.duke.edu 12345
+For max-age=120, resend the request after 120 s, you will find that the response has expired
+
+Chuncked:
+Visit http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx
+
+404:
+Visit http://www.netdpi.net/files/beej/client-server-interactive.png%20HTTP/1.1
+
+The http website with multiple requests on the same page:
+Visit http://www.fudan.edu.cn/2016/index.html

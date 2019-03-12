@@ -1,0 +1,326 @@
+1: "GET people.duke.edu/~bmr23/ece568/class.html HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:26 2019
+
+1: not in cache
+1: Requesting "GET people.duke.edu/~bmr23/ece568/class.html HTTP/1.1" from people.duke.edu
+1: Received "HTTP/1.1 200 OK" from people.duke.edu
+1: cached, expires at Mon Feb 25 23:50:27 2019
+
+2: "GET people.duke.edu/~bmr23/style.css HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:27 2019
+
+2: not in cache
+2: Requesting "GET people.duke.edu/~bmr23/style.css HTTP/1.1" from people.duke.edu
+2: Received "HTTP/1.1 200 OK" from people.duke.edu
+2: cached, expires at Mon Feb 25 23:50:27 2019
+
+3: "GET people.duke.edu/~bmr23/ece568/class.html HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:35 2019
+
+3: cached, expires at Mon Feb 25 23:50:35 2019
+
+4: "GET people.duke.edu/~bmr23/ece568/class.html HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:40 2019
+
+4: cached, expires at Mon Feb 25 23:50:40 2019
+
+5: "CONNECT notifications.google.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:41 2019
+
+6: "GET people.duke.edu/~bmr23/ece568/slides/ERSS_00_Intro_0.pdf HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:45 2019
+
+6: not in cache
+6: Requesting "GET people.duke.edu/~bmr23/ece568/slides/ERSS_00_Intro_0.pdf HTTP/1.1" from people.duke.edu
+6: Received "HTTP/1.1 200 OK" from people.duke.edu
+6: cached, expires at Mon Feb 25 23:50:49 2019
+
+7: "GET people.duke.edu/favicon.ico HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:49 2019
+
+7: not in cache
+7: Requesting "GET people.duke.edu/favicon.ico HTTP/1.1" from people.duke.edu
+7: Received "HTTP/1.1 404 Not Found" from people.duke.edu
+8: "CONNECT www.google.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:53 2019
+
+9: "CONNECT ssl.gstatic.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:54 2019
+
+10: "CONNECT www.gstatic.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:54 2019
+
+11: "CONNECT apis.google.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:54 2019
+
+12: "CONNECT adservice.google.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:54 2019
+
+13: "CONNECT googleads.g.doubleclick.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:54 2019
+
+14: "CONNECT id.google.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:58 2019
+
+15: "CONNECT encrypted-tbn0.gstatic.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:59 2019
+
+16: "CONNECT img.youtube.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:50:59 2019
+
+17: "CONNECT www.forbes.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+18: "CONNECT cdn.speedcurve.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+19: "CONNECT contextual.media.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+20: "CONNECT i.forbesimg.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+21: "CONNECT thumbor.forbes.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+22: "CONNECT contextual.media.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+23: "CONNECT www.googletagmanager.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+24: "CONNECT static.criteo.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+25: "CONNECT c.amazon-adsystem.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+27: "CONNECT z.moatads.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+26: "CONNECT www.googletagservices.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+28: "CONNECT adservex.media.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:02 2019
+
+29: "CONNECT securepubads.g.doubleclick.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+31: "CONNECT aax.amazon-adsystem.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+30: "CONNECT c.amazon-adsystem.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+32: "CONNECT mb.moatads.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+33: "CONNECT px.moatads.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+34: "CONNECT api.b2c.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+35: "CONNECT z.moatads.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+36: "CONNECT www.google-analytics.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+37: "CONNECT sb.scorecardresearch.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+40: "CONNECT fast.forbes.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+41: "CONNECT tags.bkrtx.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+44: "CONNECT consent.truste.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+38: "CONNECT connect.facebook.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+42: "CONNECT cdn.exelator.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+43: "CONNECT snap.licdn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+39: "CONNECT ml314.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+45: "CONNECT s.amazon-adsystem.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:03 2019
+
+40: Tunnel closed
+46: "CONNECT fast.forbes.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+46: Tunnel closed
+47: "CONNECT www.facebook.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+48: "CONNECT in.ml314.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+49: "CONNECT tags.bluekai.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+50: "CONNECT idsync.rlcdn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+51: "CONNECT pixel.mathtag.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+52: "CONNECT sync.crwdcntrl.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+53: "CONNECT ps.eyeota.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+54: "CONNECT secure.quantserve.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+55: "CONNECT stags.bluekai.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+56: "CONNECT qsearch-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+57: "CONNECT ampcid.google.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+58: "CONNECT players.brightcove.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+59: "CONNECT rules.quantcount.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+60: "CONNECT stats.g.doubleclick.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+61: "CONNECT qsearch-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+62: "CONNECT tpc.googlesyndication.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+63: "CONNECT qsearch-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+64: "CONNECT qsearch-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:04 2019
+
+65: "CONNECT qsearch-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+66: "CONNECT qsearch-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+67: "CONNECT hbx-lg.media.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+68: "CONNECT c.aaxads.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+69: "CONNECT gum.criteo.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+70: "CONNECT apex.go.sonobi.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+71: "CONNECT s.mnet-ad.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+72: "CONNECT us-u.openx.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+73: "CONNECT cdneast-xch.media.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+74: "CONNECT pixel.quantserve.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+19: Tunnel closed
+75: "CONNECT apex.go.sonobi.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+22: Tunnel closed
+76: "CONNECT px.moatads.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+77: "CONNECT sticebmedia-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+78: "CONNECT pagead2.googlesyndication.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+79: "CONNECT pixel.quantserve.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+80: "CONNECT x.bidswitch.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+81: "CONNECT match.adsrvr.org:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+83: "CONNECT sync.1rx.io:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+85: "CONNECT trc.taboola.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+86: "CONNECT contextual.media.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+84: "CONNECT bh.contextweb.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+88: "CONNECT uipglob.semasio.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+82: "CONNECT sync.mathtag.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+89: "CONNECT presentation-atl1.turn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+87: "CONNECT eb2.3lift.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+90: "CONNECT ap.lijit.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+91: "CONNECT dpm.demdex.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+92: "CONNECT mid.rkdms.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+93: "CONNECT px.powerlinks.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+94: "CONNECT sync.go.sonobi.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+95: "CONNECT contextual.media.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+96: "CONNECT bh.contextweb.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+97: "CONNECT contextual.media.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:05 2019
+
+98: "CONNECT sticebmedia-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+99: "CONNECT match.taboola.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+100: "CONNECT dpm.demdex.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+101: "CONNECT bsw.digitru.st:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+97: Tunnel closed
+102: "CONNECT sync.go.sonobi.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+103: "CONNECT sync.go.sonobi.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+104: "CONNECT uipglob.semasio.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+105: "CONNECT cperformmedia-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+106: "CONNECT img-eb.media.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+107: "CONNECT choices.truste.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+108: "CONNECT cdn.doubleverify.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+109: "CONNECT sync.go.sonobi.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+95: Tunnel closed
+110: "CONNECT sync.go.sonobi.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+111: "CONNECT match.zorosrv.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+112: "CONNECT track.eyeviewads.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+114: "CONNECT p.solocpm.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+116: "CONNECT ssum-sec.casalemedia.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+113: "CONNECT sync.extend.tv:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+115: "CONNECT image6.pubmatic.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+117: "CONNECT px.adhigh.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+118: "CONNECT gce-sc.bidswitch.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+119: "CONNECT image6.pubmatic.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+120: "CONNECT aaxdetect.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+121: "CONNECT cperformmedia-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:06 2019
+
+122: "CONNECT sync.extend.tv:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:07 2019
+
+123: "CONNECT lperformmedia-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:07 2019
+
+124: "CONNECT cperformmedia-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:07 2019
+
+125: "CONNECT cperformmedia-a.akamaihd.net:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:07 2019
+
+126: "CONNECT pixeltrack.eyeviewads.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:07 2019
+
+123: Tunnel closed
+105: Tunnel closed
+125: Tunnel closed
+124: Tunnel closed
+115: Tunnel closed
+122: Tunnel closed
+58: Tunnel closed
+118: Tunnel closed
+56: Tunnel closed
+70: Tunnel closed
+75: Tunnel closed
+50: Tunnel closed
+102: Tunnel closed
+103: Tunnel closed
+109: Tunnel closed
+110: Tunnel closed
+94: Tunnel closed
+127: "CONNECT www.linkedin.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:09 2019
+
+128: "CONNECT static.licdn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:09 2019
+
+129: "CONNECT static.licdn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:09 2019
+
+130: "CONNECT static.licdn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:09 2019
+
+131: "CONNECT static.licdn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:09 2019
+
+132: "CONNECT static.licdn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:09 2019
+
+133: "CONNECT static.licdn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:09 2019
+
+134: "CONNECT platform.linkedin.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:10 2019
+
+135: "CONNECT ssl.google-analytics.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:10 2019
+
+136: "CONNECT media.licdn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:10 2019
+
+137: "CONNECT static.licdn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:10 2019
+
+138: "CONNECT radar.cedexis.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:10 2019
+
+139: "CONNECT secure.adnxs.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:10 2019
+
+140: "CONNECT static.licdn.com:443 HTTP/1.1" from 198.86.29.21 @ Mon Feb 25 23:51:10 2019
+
+89: Tunnel closed

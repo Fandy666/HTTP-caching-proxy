@@ -1,0 +1,143 @@
+1: "GET detectportal.firefox.com/success.txt HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:09 2019
+1: not in cache
+1: Requesting "GET detectportal.firefox.com/success.txt HTTP/1.1" from detectportal.firefox.com
+1: Received "HTTP/1.1 200 OK" from detectportal.firefox.com
+1: not cacheable because Cache-Control: no-store
+2: "CONNECT push.services.mozilla.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:09 2019
+3: "CONNECT tiles.services.mozilla.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:09 2019
+4: "CONNECT services.addons.mozilla.org:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:10 2019
+5: "POST ocsp.digicert.com/ HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:10 2019
+6: "POST ocsp.digicert.com/ HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:10 2019
+7: "POST ocsp.digicert.com/ HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:10 2019
+8: "CONNECT safebrowsing.googleapis.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:11 2019
+9: "CONNECT tiles.services.mozilla.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:11 2019
+10: "POST ocsp.pki.goog/GTSGIAG3 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:11 2019
+11: "GET beej-zhcn.netdpi.net/ HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:11 2019
+12: "CONNECT safebrowsing.googleapis.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:11 2019
+11: not in cache
+11: Requesting "GET beej-zhcn.netdpi.net/ HTTP/1.1" from beej-zhcn.netdpi.net
+13: "POST ocsp.pki.goog/GTSGIAG3 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:11 2019
+12: Tunnel closed
+11: Received "HTTP/1.1 200 OK" from beej-zhcn.netdpi.net
+11: not cacheable because Cache-Control: no-store
+14: "GET www.gstatic.com/sites/p/6b8a44/system/app/pagetypes/announcements/announcements.css HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:14 2019
+15: "GET www.gstatic.com/sites/p/6b8a44/system/app/themes/simple/standard-css-simple-ltr-ltr.css HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:14 2019
+17: "GET www.gstatic.com/sites/p/6b8a44/system/js/jot_min_announcements_view__zh_cn.js HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:14 2019
+16: "GET beej-zhcn.netdpi.net/_/rsrc/1550133439000/system/app/css/camelot/allthemes-view.css HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:14 2019
+18: "GET beej-zhcn.netdpi.net/_/rsrc/1550133439000/system/app/css/overlay.css?cb=simple49a100%2550300goog-ws-nav-leftcontent30middlestandard HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:14 2019
+14: not in cache
+14: Requesting "GET www.gstatic.com/sites/p/6b8a44/system/app/pagetypes/announcements/announcements.css HTTP/1.1" from www.gstatic.com
+16: not in cache
+16: Requesting "GET beej-zhcn.netdpi.net/_/rsrc/1550133439000/system/app/css/camelot/allthemes-view.css HTTP/1.1" from beej-zhcn.netdpi.net
+15: not in cache
+15: Requesting "GET www.gstatic.com/sites/p/6b8a44/system/app/themes/simple/standard-css-simple-ltr-ltr.css HTTP/1.1" from www.gstatic.com
+17: not in cache
+17: Requesting "GET www.gstatic.com/sites/p/6b8a44/system/js/jot_min_announcements_view__zh_cn.js HTTP/1.1" from www.gstatic.com
+18: not in cache
+18: Requesting "GET beej-zhcn.netdpi.net/_/rsrc/1550133439000/system/app/css/overlay.css?cb=simple49a100%2550300goog-ws-nav-leftcontent30middlestandard HTTP/1.1" from beej-zhcn.netdpi.net
+21: "CONNECT shavar.services.mozilla.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:14 2019
+15: Received "HTTP/1.1 200 OK" from www.gstatic.com
+15: cached, expires at Fri Feb 28 04:40:14 2020
+14: Received "HTTP/1.1 200 OK" from www.gstatic.com
+14: cached, expires at Fri Feb 28 04:40:14 2020
+16: Received "HTTP/1.1 200 OK" from beej-zhcn.netdpi.net
+16: not cacheable because Cache-Control: no-store
+17: Received "HTTP/1.1 200 OK" from www.gstatic.com
+18: Received "HTTP/1.1 200 OK" from beej-zhcn.netdpi.net
+18: not cacheable because Cache-Control: no-store
+19: "GET 4.bp.blogspot.com/-NhABRYvcyKo/UzE7U0Pd2mI/AAAAAAAACFo/incJz0y_B2A/s320/beejsguite.jpg HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:15 2019
+17: cached, expires at Fri Feb 28 04:40:15 2020
+20: "CONNECT i.creativecommons.org:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:15 2019
+22: "GET beej-zhcn.netdpi.net/_/rsrc/1550133439000/system/app/images/icon_feed.gif HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:15 2019
+22: not in cache
+22: Requesting "GET beej-zhcn.netdpi.net/_/rsrc/1550133439000/system/app/images/icon_feed.gif HTTP/1.1" from beej-zhcn.netdpi.net
+23: "GET www.gstatic.com/sites/p/6b8a44/system/app/images/tree_ltr.gif HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:15 2019
+24: "GET www.gstatic.com/sites/p/6b8a44/system/app/images/camelot.png HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:15 2019
+23: not in cache
+23: Requesting "GET www.gstatic.com/sites/p/6b8a44/system/app/images/tree_ltr.gif HTTP/1.1" from www.gstatic.com
+19: not in cache
+19: Requesting "GET 4.bp.blogspot.com/-NhABRYvcyKo/UzE7U0Pd2mI/AAAAAAAACFo/incJz0y_B2A/s320/beejsguite.jpg HTTP/1.1" from 4.bp.blogspot.com
+24: not in cache
+24: Requesting "GET www.gstatic.com/sites/p/6b8a44/system/app/images/camelot.png HTTP/1.1" from www.gstatic.com
+19: Received "HTTP/1.1 200 OK" from 4.bp.blogspot.com
+19: cached, expires at Fri, 01 Mar 2019 01:02:44 GMT
+23: Received "HTTP/1.1 200 OK" from www.gstatic.com
+23: cached, expires at Fri Feb 28 04:40:15 2020
+24: Received "HTTP/1.1 200 OK" from www.gstatic.com
+24: cached, expires at Fri Feb 28 04:40:15 2020
+25: "CONNECT apis.google.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:15 2019
+22: Received "HTTP/1.1 200 OK" from beej-zhcn.netdpi.net
+22: not cacheable because Cache-Control: no-store
+26: "CONNECT licensebuttons.net:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:15 2019
+27: "POST ocsp.pki.goog/GTSGIAG3 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:15 2019
+28: "POST ocsp.digicert.com/ HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:15 2019
+29: "GET www.gstatic.com/sites/p/6b8a44/system/app/images/apple-touch-icon.png HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:15 2019
+30: "GET beej-zhcn.netdpi.net/_/rsrc/1468912995677/favicon.ico HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:15 2019
+29: not in cache
+29: Requesting "GET www.gstatic.com/sites/p/6b8a44/system/app/images/apple-touch-icon.png HTTP/1.1" from www.gstatic.com
+30: not in cache
+30: Requesting "GET beej-zhcn.netdpi.net/_/rsrc/1468912995677/favicon.ico HTTP/1.1" from beej-zhcn.netdpi.net
+29: Received "HTTP/1.1 200 OK" from www.gstatic.com
+29: cached, expires at Fri Feb 28 04:40:15 2020
+30: Received "HTTP/1.1 200 OK" from beej-zhcn.netdpi.net
+30: not cacheable because Cache-Control: no-store
+31: "CONNECT accounts.google.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:17 2019
+32: "POST ocsp.pki.goog/GTSGIAG3 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:17 2019
+33: "CONNECT ssl.gstatic.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:19 2019
+34: "POST ocsp.pki.goog/GTSGIAG3 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:19 2019
+35: "CONNECT snippets.cdn.mozilla.net:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:20 2019
+36: "GET csi.gstatic.com/csi?v=3&s=jotspot&action=load,announcements,user_page&it=wtsrt_.3419,tbsd_.14,tbnd_.-3434&srt=3419&rt=scl.178,cl.202,sjl.207,jl.294,render.320,ol.6899 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:21 2019
+36: not in cache
+36: Requesting "GET csi.gstatic.com/csi?v=3&s=jotspot&action=load,announcements,user_page&it=wtsrt_.3419,tbsd_.14,tbnd_.-3434&srt=3419&rt=scl.178,cl.202,sjl.207,jl.294,render.320,ol.6899 HTTP/1.1" from csi.gstatic.com
+37: "CONNECT www.google-analytics.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:21 2019
+38: "POST ocsp.pki.goog/GTSGIAG3 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:21 2019
+36: Received "HTTP/1.1 204 No Content" from csi.gstatic.com
+37: Tunnel closed
+39: "GET aaron.netdpi.net/ HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:21 2019
+39: not in cache
+39: Requesting "GET aaron.netdpi.net/ HTTP/1.1" from aaron.netdpi.net
+39: Received "HTTP/1.1 200 OK" from aaron.netdpi.net
+39: not cacheable because Cache-Control: no-store
+40: "GET aaron.netdpi.net/_/rsrc/1550133439000/system/app/css/overlay.css?cb=simple39a80%2550260goog-ws-nonecontent30middlestandard HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:24 2019
+41: "GET aaron.netdpi.net/_/rsrc/1550133439000/system/app/css/camelot/allthemes-view.css HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:24 2019
+42: "GET www.gstatic.com/sites/p/6b8a44/system/js/jot_min_view__zh_tw.js HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:24 2019
+40: not in cache
+40: Requesting "GET aaron.netdpi.net/_/rsrc/1550133439000/system/app/css/overlay.css?cb=simple39a80%2550260goog-ws-nonecontent30middlestandard HTTP/1.1" from aaron.netdpi.net
+41: not in cache
+41: Requesting "GET aaron.netdpi.net/_/rsrc/1550133439000/system/app/css/camelot/allthemes-view.css HTTP/1.1" from aaron.netdpi.net
+42: not in cache
+42: Requesting "GET www.gstatic.com/sites/p/6b8a44/system/js/jot_min_view__zh_tw.js HTTP/1.1" from www.gstatic.com
+41: Received "HTTP/1.1 200 OK" from aaron.netdpi.net
+41: not cacheable because Cache-Control: no-store
+42: Received "HTTP/1.1 200 OK" from www.gstatic.com
+40: Received "HTTP/1.1 200 OK" from aaron.netdpi.net
+40: not cacheable because Cache-Control: no-store
+42: cached, expires at Fri Feb 28 04:40:24 2020
+43: "GET aaron.netdpi.net/_/rsrc/1472869434586/favicon.ico HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:24 2019
+43: not in cache
+43: Requesting "GET aaron.netdpi.net/_/rsrc/1472869434586/favicon.ico HTTP/1.1" from aaron.netdpi.net
+44: "CONNECT docs.google.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:24 2019
+45: "POST ocsp.pki.goog/GTSGIAG3 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:24 2019
+43: Received "HTTP/1.1 200 OK" from aaron.netdpi.net
+43: not cacheable because Cache-Control: no-store
+46: "GET aaron.netdpi.net/_/tz?jot.xtok=undefined&afjstz=wg12Cr1gF0r1g12Cr3gF0r7g12Cr1 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:25 2019
+46: not in cache
+46: Requesting "GET aaron.netdpi.net/_/tz?jot.xtok=undefined&afjstz=wg12Cr1gF0r1g12Cr3gF0r7g12Cr1 HTTP/1.1" from aaron.netdpi.net
+46: Received "HTTP/1.1 200 OK" from aaron.netdpi.net
+46: not cacheable because Cache-Control: no-store
+47: "CONNECT www.google.com:443 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:26 2019
+48: "POST ocsp.pki.goog/GTSGIAG3 HTTP/1.1" from 10.197.121.90 @ Thu Feb 28 04:40:26 2019
+47: Tunnel closed
+44: Tunnel closed
+35: Tunnel closed
+33: Tunnel closed
+31: Tunnel closed
+26: Tunnel closed
+20: Tunnel closed
+25: Tunnel closed
+21: Tunnel closed
+8: Tunnel closed
+9: Tunnel closed
+4: Tunnel closed
+3: Tunnel closed
+2: Tunnel closed
